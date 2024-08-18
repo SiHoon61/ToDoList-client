@@ -46,6 +46,7 @@ const TodayWeather = () => {
                     {/* {data.1HourRainfall} */}
                 </Rainfall>
                 <Humidity>
+                    습도 76.0 %
                     {/* {data.Humidity} */}
                 </Humidity>
             </WeatherContainer>

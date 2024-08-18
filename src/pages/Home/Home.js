@@ -5,14 +5,15 @@ import CalendarBody from "../../components/Calendar/Calendar";
 import TodoItem from "../../components/TodoItem/TodoItem";
 
 //weather
-import Weather from '../../components/Weather/Weather';
-
+import BeforeWeather from '../../components/BeforeWeather/BeforeWeather';
+import TodayWeather from "../../components/TodayWeather/TodayWeather";
 const Home = () => {
   return (
     <MainDiv>
       <LeftDiv>
         <CalendarBody />
-        <Weather />
+        <BeforeWeather />
+        <TodayWeather />
       </LeftDiv>
       <RightDiv>
         <TodoList>

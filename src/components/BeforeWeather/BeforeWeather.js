@@ -7,7 +7,7 @@ import {
 
 import MyResponsiveLine from './chart';
 
-const Weather = () => {
+const BeforeWeather = () => {
     const sampleData = [
         {
             stnId: "232",
@@ -103,4 +103,4 @@ const Weather = () => {
     );
 };
 
-export default Weather;
+export default BeforeWeather;

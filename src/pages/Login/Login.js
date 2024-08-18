@@ -9,6 +9,7 @@ import {
     Logo,
     LoginButton,
 } from './style';
+import TodayWeather from '../../components/TodayWeather/TodayWeather';
 
 const Login = () => {
     const kakaoLoginHandler = () => {
@@ -21,7 +22,6 @@ const Login = () => {
                     ToDoList
                 </Logo>
                 <LoginButton onClick={kakaoLoginHandler} />
-
             </LogoBox>
 
         </>

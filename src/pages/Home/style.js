@@ -3,36 +3,36 @@ import styled from "styled-components";
 export const MainDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 50px;
 `;
 
 export const LeftDiv = styled.div`
-  width: 50%; /* 페이지의 60%를 차지하게 설정 */
+  width: 60%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
+  margin-left: 60px;
 `;
 
 export const RightDiv = styled.div`
-  width: 45%; /* 페이지의 35%를 차지하게 설정 */
+  width: 45%;
+  justify-content: center;
+  display: flex;
 `;
 
 export const TodoList = styled.div`
   width: 100%;
-`;
+  max-width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
 
-export const CalendarGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-`;
-
-export const CalendarDay = styled.div`
-  padding: 10px;
-  background-color: ${({ isCurrentMonth, isSelected }) =>
-    isSelected ? "#219ebc" : isCurrentMonth ? "#fff" : "#f0f0f0"};
-  color: ${({ isSunday }) => (isSunday ? "red" : "black")};
-  text-align: center;
-  cursor: pointer;
+  span {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
 `;
 
 export const Weather = styled.div``;

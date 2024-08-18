@@ -24,7 +24,7 @@ const Login = () => {
         };
 
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/test}`, postData);
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/test`, postData);
             console.log('Response:', response.data);
         } catch (error) {
             console.error('There was an error making the request:', error);

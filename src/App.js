@@ -1,11 +1,17 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
     <>
-      <div className="App">안녕하세요 임시훈입니다 안녕하세요 한상아입니다.</div>
-      <div>반갑습니다</div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+        </Routes>
+      </Router>
     </>
     
   );

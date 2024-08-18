@@ -22,6 +22,16 @@ export const CalendarDay = styled.div`
 
   span {
     display: inline-block;
+    ${({ isSelected }) =>
+      isSelected &&
+      `
+      background-color: lightgray;
+      padding: 2px 6px; 
+      color: darkblue;
+      border-radius: 4px;
+      font-weight: bold; /* 선택된 날짜는 굵게 */
+    `}
+
     ${({ isToday }) =>
       isToday &&
       `
@@ -31,6 +41,14 @@ export const CalendarDay = styled.div`
       border-radius: 4px;
       font-weight: bold; /* 오늘 날짜는 굵게 */
     `}
+
+    ${({ isSelected, isToday }) =>
+      isSelected &&
+      isToday &&
+      `
+      border: 3px solid gray; /* 오늘 날짜가 선택된 경우에 추가적인 검정색 라인 */
+    `}
+  }
 `;
 
 export const EmptyCalendarDay = styled.div`
@@ -43,7 +61,7 @@ export const CalendarHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
 `;
 

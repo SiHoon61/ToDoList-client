@@ -9,7 +9,7 @@ import {
   EmptyCalendarDay,
 } from "./style";
 
-const CalendarBody = () => {
+const CalendarBody = ({ onDateClick }) => {
   const [currentDate, setCurrentDate] = useState(dayjs());
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -19,6 +19,7 @@ const CalendarBody = () => {
   const endDay = currentDate.endOf("month");
 
   const firstDayOfWeek = startDay.day();
+  const lastDayOfWeek = endDay.day();
 
   const days = [];
   let day = startDay;
@@ -32,6 +33,15 @@ const CalendarBody = () => {
     day = day.add(1, "day");
   }
 
+  for (let i = lastDayOfWeek + 1; i <= 6; i++) {
+    days.push(null);
+  }
+
+  const handleDateClick = (date) => {
+    setSelectedDate(date);
+    onDateClick(date); // 선택된 날짜를 Home 컴포넌트로 전달
+  };
+
   return (
     <div>
       <CalendarHeader>
@@ -40,7 +50,7 @@ const CalendarBody = () => {
         >
           &lt;
         </CalendarNavButton>
-        <span>{currentDate.format("MM월")}</span>
+        <span>{currentDate.format("M월")}</span>
         <CalendarNavButton
           onClick={() => setCurrentDate(currentDate.add(1, "month"))}
         >
@@ -48,7 +58,7 @@ const CalendarBody = () => {
         </CalendarNavButton>
       </CalendarHeader>
       <CalendarGrid>
-        {["Sun", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
           <CalendarWeekday key={day}>{day}</CalendarWeekday>
         ))}
         {days.map((day, index) =>
@@ -59,7 +69,7 @@ const CalendarBody = () => {
               isSelected={day.isSame(selectedDate, "day")}
               isSunday={day.day() === 0}
               isToday={day.isSame(today, "day")}
-              onClick={() => setSelectedDate(day)}
+              onClick={() => handleDateClick(day)}
             >
               <span>{day.format("D")}</span>{" "}
             </CalendarDay>

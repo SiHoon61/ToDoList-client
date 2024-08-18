@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const MainDiv = styled.div`
   display: flex;
@@ -35,4 +35,61 @@ export const TodoList = styled.div`
   }
 `;
 
-export const Weather = styled.div``;
+export const ShowInputButton = styled.button`
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #219ebc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+
+  &:hover {
+    background-color: #197b8c;
+  }
+`;
+
+const slideDown = keyframes`
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: auto;
+    opacity: 1;
+  }
+`;
+
+export const TodoInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  animation: ${slideDown} 0.3s ease forwards;
+`;
+
+export const TodoInput = styled.input`
+  flex-grow: 1;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-right: 10px;
+  box-sizing: border-box;
+`;
+
+export const AddButton = styled.button`
+  padding: 10px 20px;
+  background-color: #219ebc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: #197b8c;
+  }
+`;

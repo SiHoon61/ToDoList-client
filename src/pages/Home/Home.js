@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { MainDiv, LeftDiv, RightDiv, Weather, TodoList } from "./style";
+import { MainDiv, LeftDiv, RightDiv, TodoList } from "./style";
 
 import CalendarBody from "../../components/Calendar/Calendar";
 import TodoItem from "../../components/TodoItem/TodoItem";
+
+//weather
+import Weather from '../../components/Weather/Weather';
 
 const Home = () => {
   return (
     <MainDiv>
       <LeftDiv>
         <CalendarBody />
-        <Weather>날씨입니다</Weather>
+        <Weather />
       </LeftDiv>
       <RightDiv>
         <TodoList>

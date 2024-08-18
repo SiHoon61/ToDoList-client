@@ -1,8 +1,5 @@
 import React from 'react';
 
-//weather
-import Weather from '../../components/Weather/Weather';
-
 //link
 import { KAKAO_LINK } from '../../config/config';
 
@@ -24,9 +21,9 @@ const Login = () => {
                     ToDoList
                 </Logo>
                 <LoginButton onClick={kakaoLoginHandler} />
-                <Weather />
+
             </LogoBox>
-            
+
         </>
     );
 };

@@ -10,7 +10,7 @@ import {
 } from './style';
 
 const QRcode = () => {
-    const menu = 'Menu4';
+    const menu = 'Menu1';
     const [count, setCount] = useState('');
     useEffect(() => {
         const fetchData = async () => {
@@ -24,7 +24,7 @@ const QRcode = () => {
             }
         };
         fetchData();
-    }, [])
+    },[])
 
     const randomValue = useRandomValue();
     return (
@@ -33,10 +33,10 @@ const QRcode = () => {
                 천원의 아침밥 결제 QR
             </Title>
             <SubTitle>
-                설렁탕
+                오늘의 메뉴: 밥 + 반찬 4가지
             </SubTitle>
             <QRCode
-                value={`http://192.168.0.104:3000/verification?menu=${menu}&code=${randomValue}`}
+                value={`${process.env.REACT_APP_QR_URL}/verification?menu=${menu}&code=${randomValue}`}
                 size={256}
             />
             <MenuCount>

@@ -36,7 +36,7 @@ const QRcode = () => {
                 뼈해장국
             </SubTitle>
             <QRCode
-                value={`http://192.168.0.104:3000/verification?menu=${menu}&code=${randomValue}`}
+                value={`${process.env.REACT_APP_QR_URL}/verification?menu=${menu}&code=${randomValue}`}
                 size={256}
             />
             <MenuCount>

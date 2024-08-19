@@ -9,7 +9,7 @@ const Verification = () => {
     const menuValue = url.searchParams.get("menu");
     const code = url.searchParams.get("code");
     if (parseInt(code, 10) === randomValue) {
-        navigate('/pay');
+        navigate('/pay', { state: menuValue });
     }
     return (
         <h3>

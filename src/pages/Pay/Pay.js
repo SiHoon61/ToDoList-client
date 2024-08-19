@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, } from 'react-router-dom';
 const Pay = () => {
-    const navigate = useNavigate();
+    const location = useLocation();
+    const { menu } = location.state;
     const fetchData = async () => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/payment/complete`, {}, {
                 params: {
-                    menuName: 'Menu1',
+                    menuName: menu,
                 },
             });
             console.log(response.data); 

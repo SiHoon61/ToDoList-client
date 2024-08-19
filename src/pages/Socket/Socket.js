@@ -1,51 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import SockJS from 'sockjs-client';
+import { Stomp } from '@stomp/stompjs';
 
-function SocketTest() {
-    const clickHandler = async () => {
-        try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/payment/complete`,
-                {},
-                {
-                    params: {
-                        menuName: 'Menu1',
-                    },
-                });
-            console.log(response.data);
-        } catch (err) {
-            console.log(err.message);
-        }
-    };
-
-    const [message, setMessage] = useState('');
+function App() {
+    const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        const socket = new WebSocket('ws://localhost:8080/ws');
+        const socket = new SockJS('http://localhost:8080/ws');
+        const stompClient = Stomp.over(socket);
 
-        socket.onmessage = (event) => {
-            setMessage(event.data);
-        };
-
-        socket.onopen = () => {
-            console.log('WebSocket connection established');
-        };
-
-        socket.onclose = () => {
-            console.log('WebSocket connection closed');
-        };
+        stompClient.connect({}, () => {
+            stompClient.subscribe('/topic/updates', (message) => {
+                if (message.body) {
+                    setMessages(prevMessages => [...prevMessages, message.body]);
+                }
+            });
+        });
 
         return () => {
-            socket.close();
+            if (stompClient) {
+                stompClient.disconnect();
+            }
         };
     }, []);
 
     return (
         <div>
-            <button onClick={() => clickHandler}>신호 전송</button>
-            <h1>Real-time Message</h1>
-            <p>{message}</p>
+            <h1>Real-time Updates</h1>
+            <ul>
+                {messages.map((message, index) => (
+                    <li key={index}>{message}</li>
+                ))}
+            </ul>
         </div>
     );
 }
 
-export default SocketTest;
+export default App;

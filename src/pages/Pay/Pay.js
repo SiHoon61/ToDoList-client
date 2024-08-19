@@ -1,6 +1,21 @@
 import React from 'react';
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Pay = () => {
+    const navigate = useNavigate();
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}`, {
+                params: {
+                    menu: 'Menu1',
+                },
+            });
+            console.log(response.data); 
+        } catch (err) {
+            console.log(err.message); 
+        }
+    };
+
     const onClickPayment = () => {
         // 아임포트 결제 모듈 불러오기
         const { IMP } = window;
@@ -25,11 +40,10 @@ const Pay = () => {
     const callback = (response) => {
         const { success, error_msg } = response;
         if (success) {
-            alert('결제가 완료되었습니다.');
-            // 결제 성공 시 추가 로직 구현
+            fetchData()
+            navigate('/complete');
         } else {
             alert(`결제에 실패하였습니다. 오류 내용: ${error_msg}`);
-            // 결제 실패 시 추가 로직 구현
         }
     };
     return (

@@ -30,6 +30,7 @@ const QRcode = () => {
         }, 1000);
         return () => clearInterval(intervalId);
     }, [])
+    
 
     const randomValue = useRandomValue();
     return (

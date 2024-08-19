@@ -16,7 +16,7 @@ const Pay = () => {
         try {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/payment/complete`, {}, {
                 params: {
-                    menuName: menu,
+                    menuName: "Menu1",
                 },
             });
             console.log(response.data);
@@ -27,7 +27,6 @@ const Pay = () => {
 
 
     const onClickPayment = () => {
-        console.log(menu);
         // 아임포트 결제 모듈 불러오기
         const { IMP } = window;
         IMP.init(`${process.env.REACT_APP_IMP}`); // 포트원에서 발급받은 가맹점 식별코드 입력
@@ -37,7 +36,7 @@ const Pay = () => {
             pay_method: 'card', // 결제수단 (예: card, trans 등)
             merchant_uid: `mid_${new Date().getTime()}`, // 가맹점에서 생성한 고유 주문번호
             name: '천원의 아침밥',
-            amount: '100', // 결제 금액
+            amount: '1000', // 결제 금액
             buyer_email: 'test@test.com',
             buyer_name: '홍길동',
             buyer_tel: '010-1234-5678',
@@ -45,18 +44,27 @@ const Pay = () => {
             buyer_postcode: '123-456',
         };
 
-        IMP.request_pay(data, callback);
+        IMP.request_pay(data, (response) => {
+            console.log(response); // 결제 응답 전체를 확인
+            const { success, error_msg } = response;
+            if (success) {
+                fetchData();
+                navigate('/complete');
+            } else {
+                alert(`결제에 실패하였습니다. 오류 내용: ${error_msg}`);
+            }
+        });
     };
 
-    const callback = (response) => {
-        const { success, error_msg } = response;
-        if (success) {
-            fetchData()
-            navigate('/complete');
-        } else {
-            alert(`결제에 실패하였습니다. 오류 내용: ${error_msg}`);
-        }
-    };
+    // const callback = (response) => {
+    //     const { success, error_msg } = response;
+    //     if (success) {
+    //         fetchData()
+    //         navigate('/complete');
+    //     } else {
+    //         alert(`결제에 실패하였습니다. 오류 내용: ${error_msg}`);
+    //     }
+    // };
     return (
         <Container>
             <Title>결제가 진행중입니다. 잠시만 기다려주세요</Title>

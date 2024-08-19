@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { useLocation, } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Pay = () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const { menu } = location.state;
     const fetchData = async () => {
@@ -50,6 +51,7 @@ const Pay = () => {
     return (
         <div>
             <h1>결제 테스트</h1>
+            <h1>{menu}</h1>
             <button onClick={onClickPayment}>결제하기</button>
         </div>
     );

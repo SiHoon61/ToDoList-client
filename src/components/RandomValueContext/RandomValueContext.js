@@ -1,25 +1,23 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
-// 랜덤 값을 저장할 컨텍스트 생성
+// RandomValueContext 생성
 const RandomValueContext = createContext();
 
 export const RandomValueProvider = ({ children }) => {
-    const [randomValue, setRandomValue] = useState(() => {
-        const savedValue = sessionStorage.getItem('randomValue');
-        return savedValue ? parseInt(savedValue, 10) : Math.floor(Math.random() * 50000) + 1;
-    });
+    const [randomValue, setRandomValue] = useState(0);
+
+    const generateRandomValue = () => {
+        const currentTimestamp = Math.floor(Date.now() / 10000); // 현재 시간을 10초 단위로 나눔
+        const newValue = (currentTimestamp % 50000) + 1; // 1에서 50000 사이의 값 생성
+        setRandomValue(newValue);
+    };
 
     useEffect(() => {
-        sessionStorage.setItem('randomValue', randomValue);
-
-        const interval = setInterval(() => {
-            const newValue = Math.floor(Math.random() * 50000) + 1;
-            setRandomValue(newValue);
-            sessionStorage.setItem('randomValue', newValue);
-        }, 10000); // 10초마다 랜덤 값 변경
+        generateRandomValue(); // 초기 값 설정
+        const interval = setInterval(generateRandomValue, 10000); // 10초마다 값 갱신
 
         return () => clearInterval(interval); // 컴포넌트 언마운트 시 interval 클리어
-    }, [randomValue]);
+    }, []);
 
     return (
         <RandomValueContext.Provider value={randomValue}>
@@ -28,5 +26,4 @@ export const RandomValueProvider = ({ children }) => {
     );
 };
 
-// 랜덤 값을 쉽게 가져올 수 있는 커스텀 훅
 export const useRandomValue = () => useContext(RandomValueContext);

@@ -6,6 +6,8 @@ import QRcode from "./pages/QRcode/QRcode";
 import Pay from "./pages/Pay/Pay";
 import Complete from "./pages/Complete/Complete";
 import Verification from "./pages/Verification/Verification";
+import SocketTest from "./pages/Socket/Socket";
+
 import { RandomValueProvider } from './components/RandomValueContext/RandomValueContext';
 
 //redirection
@@ -24,6 +26,7 @@ function App() {
             <Route path="/complete" element={<Complete />}></Route>
             <Route path="/verification" element={<Verification />}></Route>
             <Route path="/qrcode" element={<QRcode />}></Route>
+            <Route path="/socket" element={<SocketTest />}></Route>
             <Route exact path="/kakao/callback" element={<KakaoRedirection />} />
           </Routes>
         </RandomValueProvider>

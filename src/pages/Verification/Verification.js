@@ -8,14 +8,12 @@ const Verification = () => {
     const url = new URL(window.location.href);
     const menuValue = url.searchParams.get("menu");
     const code = url.searchParams.get("code");
-    if (code === randomValue) {
+    if (parseInt(code, 10) === randomValue) {
         navigate('/pay');
     }
     return (
         <h3>
             만료된 QR코드입니다. 다시 시도해주세요<br />
-            {code}/
-            {randomValue}
         </h3>
     );
 };

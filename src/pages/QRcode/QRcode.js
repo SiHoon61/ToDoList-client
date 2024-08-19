@@ -17,7 +17,6 @@ const QRcode = () => {
                 value={`http://192.168.0.104:3000/verification?menu=Menu1&code=${randomValue}`}
                 size={256}
             />
-            {randomValue}
         </BodyContainer>
     );
 };

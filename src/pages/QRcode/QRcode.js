@@ -1,12 +1,11 @@
 import React from 'react';
+import QRCode from 'qrcode.react';
 
 import {
     BodyContainer,
     Title,
-    QRImg,
-} from './style';
 
-import qrimg from '../../assets/qrimg.png';
+} from './style';
 
 const QRcode = () => {
     return (
@@ -14,9 +13,10 @@ const QRcode = () => {
             <Title>
                 천원의 아침밥 결제 QR
             </Title>
-            <QRImg src={qrimg} alt="qrimg">
-                
-            </QRImg>
+            <QRCode
+                value={"www.naver.com"}
+                size={256}
+            />
         </BodyContainer>
     );
 };

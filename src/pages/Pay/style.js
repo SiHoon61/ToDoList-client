@@ -11,3 +11,19 @@ export const Title = styled.div`
     font-size: 20px;
     font-weight: bold;
 `
+
+export const Button = styled.div`
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 45px;
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+`
+
+export const ButtonText = styled.div`
+
+`

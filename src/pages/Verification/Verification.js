@@ -14,7 +14,6 @@ const Verification = () => {
     return (
         <h3>
             만료된 QR코드입니다. 다시 시도해주세요<br />
-            {randomValue} / {code}
         </h3>
     );
 };

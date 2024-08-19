@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -19,11 +19,12 @@ const Pay = () => {
                     menuName: menu,
                 },
             });
-            console.log(response.data); 
+            console.log(response.data);
         } catch (err) {
-            console.log(err.message); 
+            console.log(err.message);
         }
     };
+
 
     const onClickPayment = () => {
         // 아임포트 결제 모듈 불러오기
@@ -57,7 +58,7 @@ const Pay = () => {
     };
     return (
         <Container>
-            <Title>버튼을 눌러 결제를 완료해주세요.</Title>
+            <Title>결제가 진행중입니다. 잠시만 기다려주세요</Title>
             <Button onClick={onClickPayment}>
                 <ButtonText>
                     결제하기

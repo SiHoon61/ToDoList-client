@@ -5,7 +5,7 @@ const Pay = () => {
     const navigate = useNavigate();
     const fetchData = async () => {
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/payment/complete`, {
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/payment/complete`, {
                 params: {
                     menuName: 'Menu1',
                 },

@@ -27,6 +27,7 @@ const Pay = () => {
 
 
     const onClickPayment = () => {
+        console.log(menu);
         // 아임포트 결제 모듈 불러오기
         const { IMP } = window;
         IMP.init(`${process.env.REACT_APP_IMP}`); // 포트원에서 발급받은 가맹점 식별코드 입력

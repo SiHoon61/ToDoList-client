@@ -37,7 +37,7 @@ const Pay = () => {
             pay_method: 'card', // 결제수단 (예: card, trans 등)
             merchant_uid: `mid_${new Date().getTime()}`, // 가맹점에서 생성한 고유 주문번호
             name: '천원의 아침밥',
-            amount: '100', // 결제 금액
+            amount: '1000', // 결제 금액
             buyer_email: 'test@test.com',
             buyer_name: '홍길동',
             buyer_tel: '010-1234-5678',

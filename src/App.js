@@ -30,15 +30,14 @@ function App() {
             <Route path="/complete" element={<Complete />}></Route>
             <Route path="/verification" element={<Verification />}></Route>
             <Route path="/qrcode_1" element={<QRcode_1 />}></Route>
-            <Route path="/qrcode_2" element={<QRcode_1 />}></Route>
-            <Route path="/qrcode_3" element={<QRcode_1 />}></Route>
-            <Route path="/qrcode_4" element={<QRcode_1 />}></Route>
-            <Route path="/qrcode_5" element={<QRcode_1 />}></Route>
+            <Route path="/qrcode_2" element={<QRcode_2 />}></Route>
+            <Route path="/qrcode_3" element={<QRcode_3 />}></Route>
+            <Route path="/qrcode_4" element={<QRcode_4 />}></Route>
+            <Route path="/qrcode_5" element={<QRcode_5 />}></Route>
             <Route path="/socket" element={<SocketTest />}></Route>
             <Route exact path="/kakao/callback" element={<KakaoRedirection />} />
           </Routes>
         </RandomValueProvider>
-
       </Router>
     </>
 

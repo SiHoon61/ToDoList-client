@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 //link
 import { KAKAO_LINK } from '../../config/config';
@@ -29,6 +30,11 @@ const Login = () => {
         } catch (error) {
             console.error('There was an error making the request:', error);
         }
+    };'
+    const navigate = useNavigate();
+
+    const handleQrClick = () => {
+        navigate("/qrcode_1");
     };
 
     return (
@@ -40,6 +46,8 @@ const Login = () => {
                 <LoginButton onClick={kakaoLoginHandler} />
             </LogoBox>
             <button onClick={handleButtonClick}>테스트</button>
+            <button onClick={handleQrClick}>qr링크</button>
+        
         </>
     );
 };

@@ -30,7 +30,7 @@ const Login = () => {
         } catch (error) {
             console.error('There was an error making the request:', error);
         }
-    };'
+    };
     const navigate = useNavigate();
 
     const handleQrClick = () => {
